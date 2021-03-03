@@ -1,15 +1,64 @@
-import React from 'react'
+import React from "react";
 import "./Home.css";
-
+import Product from "./Product";
 function Home() {
-    return (
-        <div className="home">
-          <img
-          className="home_image"
-           src="https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB428684220_.jpg" 
-          alt="" /> 
-        </div>
-    )
+  return (
+    <div className="home">
+      <img
+        className="home_image"
+        src="https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB428684220_.jpg"
+        alt=""
+      />
+      <div className="home_row">
+        <Product
+          id="12345"
+          title="Microsoft Xbox Series X (US Plug) RRT-00001 Black"
+          price={499.99}
+          rating={5}
+          image="data:image/jpeg;base64,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"
+        />
+        <Product
+          id="12345"
+          title="Sony PS5 PlayStation 5 (US Plug) Digital Edition Console 3005719 White"
+          price={499.99}
+          rating={5}
+          image="data:image/jpeg;base64,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"
+        />
+      </div>
+      <div className="home_row">
+        <Product
+          id="12345"
+          title="ipad pro 360gb (5th Generation) "
+          price={499.99}
+          rating={5}
+          image="https://blog.playstation.com/tachyon/2020/11/00-PlayStation-FAQ-featured-image-Cropped.jpg?resize=1088,612&crop_strategy=smart&zoom=1/"
+        />
+        <Product
+          id="12345"
+          title="jordans 1s"
+          price={499.99}
+          rating={5}
+          image="https://blog.playstation.com/tachyon/2020/11/00-PlayStation-FAQ-featured-image-Cropped.jpg?resize=1088,612&crop_strategy=smart&zoom=1/"
+        />
+        <Product
+          id="12345"
+          title="PS5"
+          price={499.99}
+          rating={5}
+          image="https://blog.playstation.com/tachyon/2020/11/00-PlayStation-FAQ-featured-image-Cropped.jpg?resize=1088,612&crop_strategy=smart&zoom=1/"
+        />
+      </div>
+      <div className="home_row">
+        <Product
+          id="12345"
+          title="Sony PS5 PlayStation 5 (US Plug) Digital Edition Console 3005719 White"
+          price={499.99}
+          rating={5}
+          image="https://blog.playstation.com/tachyon/2020/11/00-PlayStation-FAQ-featured-image-Cropped.jpg?resize=1088,612&crop_strategy=smart&zoom=1/"
+        />
+      </div>
+    </div>
+  );
 }
 
-export default Home
+export default Home;

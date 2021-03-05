@@ -1,0 +1,9 @@
+.login_logo {
+    width: 100px;
+    object-fit: contain;
+}
+.login {
+    background-color: white;
+    height: 100vh;
+    display: flex;
+}

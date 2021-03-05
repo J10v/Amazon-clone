@@ -1,20 +1,45 @@
-import userEvent from "@testing-library/user-event";
+import { ContactSupport } from "@material-ui/icons";
 
 export const initalState = {
-    basket: [],
+  basket: [],
+  user: null,
 };
+export const getBasketTotal = (basket) =>
+basket?.reduce((amount, item) => item.price + amount, 0);
 
-functionreducer(state, action) {
-    switch(action.type) {
-        case 'ADD_TO_BASKET' :
-            //adding item to basket
-            break;
-        case 'REMOVE_FROM_BASKET' :
-            //removing items from basket
-            break;
-        default:
-            return state;
-    }
-}
+
+
+const reducer = (state, action) => {
+  console.log(action);
+  switch (action.type) {
+    case "ADD_TO_BASKET":
+      //adding item to basket
+      return {
+           ...state,
+           basket: [...state.basket, action.item], 
+        };
+    case "REMOVE_FROM_BASKET":
+      //removing items from basket
+        let newBasket = [...state.basket];
+
+        const index = state.basket.findIndex((basketItem) => basketItem.id === action.id);
+
+        if (index >= 0) {
+            //item exist in basket, remove it...
+            newBasket.splice(index, 1);
+        } else {
+            console.warn(
+                'Cant remove product (id: ${action.id}) as its not in basket.'
+            );
+        }
+
+      return { 
+          ...state,
+          basket: newBasket,
+        };
+    default:
+      return state;
+  }
+};
 
 export default reducer;

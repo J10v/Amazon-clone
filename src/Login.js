@@ -1,7 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.css";
 import { Link } from "react-router-dom";
+import { auth } from "./firebase";
+
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const login = (event) => {
+    event.preventDefault();
+
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((auth) => {
+
+      })
+      .catch((error) => alert(error.message));
+  };
+
+  const register = (event) => {
+    event.preventDefault();
+
+    auth.createUserWithEmailAndPassword(email, password)
+    .then(auth => {
+    })
+    .catch((e) => alert(e.message));
+  };
+
   return (
     <div className="login">
       <Link to="/">
@@ -15,14 +40,30 @@ function Login() {
         <h1>Sign In</h1>
         <form>
           <h5>E-Mail</h5>
-          <input type="text" />
-          <button>Sign In</button>
+          <input
+            type="text"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
+          <h5>Password</h5>
+          <input
+            type="password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          />
+          <button onClick={login} type="submit" className="login_signInButton">
+            Sign In
+          </button>
         </form>
-        <p> 
-            By signing-up you agree to Amazon's Conditions of Use & Sales. 
-            Please see our Privacy Notice, our Cookies Notice and our Interest-based Ads Notice.
-            </p>
-            <button> Create your Amazon Account</button>
+        <p>
+          By signing-up you agree to Amazon's Conditions of Use & Sales. Please
+          see our Privacy Notice, our Cookies Notice and our Interest-based Ads
+          Notice.
+        </p>
+        <button onClick={register} className="login_registerButton">
+          {" "}
+          Create your Amazon Account
+        </button>
       </div>
     </div>
   );
